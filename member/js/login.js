@@ -1,79 +1,68 @@
-function slideFuns(){
-    var btnDomStr=['btnSignUp1','btnSignIn','btnSignUp','btnReset','signOut','signIn'];
-    var btnDomArr=[];
-    var Int1=null,Int2=null;
-    for(var i=0;i<btnDomStr.length;i++){
-      btnDomArr[i]=getDom(btnDomStr[i]);
-    }
-    btnDomArr[0].onclick=function(){
-        var upY1=0,upY2=90;
-        Int1=setInterval(slide1(upY1,upY2,btnDomArr[4],btnDomArr[5],Int1),10);
-      }
-    btnDomArr[3].onclick=function(){
-        var upY1=90,upY2=0;
-        Int2=setInterval(slide2(upY1,upY2,btnDomArr[4],btnDomArr[5],Int2),10);
-      }
-    btnDomArr[1].onclick=function(){
-      var strArr=["outUserName","outPwd"];
-      isSignOut(strArr,btnDomArr[4],"signOut");
-    }
-    btnDomArr[2].onclick=function(){
-      var strArr=["inUserName","inPwd1","inPwd2","yzm"];
-      isSignOut(strArr,btnDomArr[5],"signIn");
-    }
-  }
-  function slide1(y1,y2,that1,that2,Int){
-    return function(){
-        if(y1<90){
-          that1.style.left=(-y1)+"%";
-          y1+=5;
-        }if(y2>-15){
-          that2.style.right=(-y2)+"%";
-          y2-=5;
-        }else{
-          clearInterval(Int);
+$(document).ready(function () {
+    var $form = $('form');
+    var $user = $form.find('.username');
+    var $passwd = $form.find('.password');
+    var $submit = $form.find('.login-submit');
+    // enter键登录   
+    $(document).keyup(function(event){ 
+        if(event.keyCode ==13){ 
+          $submit.trigger("click"); 
+        } 
+    });
+    
+    $submit.on('click', function (event) {
+    	regName = /^[\u4e00-\u9fa5]{2,4}$/;//姓名
+        event.preventDefault();
+        if (!$user.val() || !$passwd.val()) {
+        	$('input').css('border','1px solid red');
+      		$('input').addClass('error');
+      		$.notice('登录提示：', '信息未填写完整！', undefined, 300, 150);
+      		return;	
         }
-    }
-  }
-  function slide2(y1,y2,that1,that2,Int){
-    return function(){
-        if(y1>-15){
-          that1.style.left=(-y1)+"%";
-          y1-=5;
-        }if(y2<90){
-          that2.style.right=(-y2)+"%";
-          y2+=5;
-        }else{
-          clearInterval(Int);
+        else if(!regName.test($user.val())){
+        	$('input:first').css('border','1px solid red');
+        	$.notice('登录提示：', '账号填写错误！', undefined, 300, 150);
         }
-    }
-  }
-  //定义DOM函数
-  function getDom(dom){
-    var domNode=document.getElementById(dom)?document.getElementById(dom):document.getElementsByClassName(dom)[0];
-    return domNode;
-  }
-  //登陆数据判断
-  function isSignOut(parmArr,parentDom,classStr){
-    var strArr=parmArr;
-    var domArr=[];
-    for(var i=0;i<strArr.length;i++){
-      domArr[i]=getDom(strArr[i]);
-    }
-    if(domArr.length != 0){
-      for(var j=0;j<domArr.length;j++){
-        var domVal=domArr[j].value;
-        if(domVal==""){
-          parentDom.setAttribute("class",classStr+" error");
-          domArr[j].style.border="1px solid #f00";
+        else if($passwd.val().length < 6){
+        	$('input:last').css('border','1px solid red');
+        	$('input').addClass('error');
+        	$.notice('登录提示：', '密码长度不能小于6位！', undefined, 300, 150);
         }
-        domArr[j].onfocus=function(){
-          this.style.border="1px solid #ccc";
-          parentDom.setAttribute("class",classStr);
-        }
-      }
-    }
-  }
-  window.onload=function(){
-      slideFuns();
-  }
+//      else{
+//      	
+//      }
+        //接口对接
+//      $.ajax({
+//          type: "POST",
+//          url: utils.URLHead + "/users/login",
+//          beforeSend: $.notice('提示！', '正在登录...', function () {
+//              utils.loading($('.jq-notice-context'));
+//          }),
+//          data: ajaxArgs,
+//          success: function(data){
+//              if(typeof data === 'string') {
+//                  data = JSON.parse(data);
+//              }
+//              if(data.code == 200) {
+//                  var admin = data.body;
+//                  // 设置登录状态
+//                  utils.setLoginState(admin);
+//                  // 登录用户信息保存到cookie中
+//                  
+//                  $.notice("提示！", "登录成功，正在跳转...");
+//                  utils.jumpUrl('../../user/setting/page.html', 2000);
+//      
+//              } else {
+//                  $.notice("提示！", "登录失败，用户或密码错误，请重新登录...");
+//              }
+//          }
+//      })
+      
+        
+
+    });
+    
+     $('#close').on('click', function (event) {
+    	$('input').css('border','1px solid #bfbfbf');
+    })
+});

@@ -5,8 +5,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 	<title>系统登录</title>
+	<!--登录界面样式-->
 	<link rel="stylesheet" type="text/css" href="css/login.css"/>
-	<script type="text/javascript" src="js/cardview.js"></script>
+	<!-- 弹窗插件样式 -->
+	<link rel="stylesheet" href="css/jquery.notice.css">
+	
 </head>
 
 <body>
@@ -17,30 +20,40 @@
 		<div class="signOut">
 			<h1>系统登录</h1>
 			<div class="container1">
+				
 				<form action="#" method="post">
 					<div class="form-group">
-						<label for="outUserName">账号:</label>
-						<input type="text" class="outUserName" name="outUserName" placeholder="请输入真实姓名"> 
+						<label for="username">账号:</label>
+						<input type="text" class="username" name="username" placeholder="请输入真实姓名"> 
 					</div>
 					<div class="form-group">
-						<label for="outPwd">密码:</label>
-						<input type="password" class="outPwd" name="outPwd" placeholder="默认密码为123456">
+						<label for="password">密码:</label>
+						<input type="password" class="password" name="password" placeholder="默认密码为123456">
 					</div>
-					<div class="form-group formGroup">
-						<span class="remeberUser">
-           					   <input type="checkbox">记住账号
-            				</span>
-					</div>
-					<div class="btn-group">
+					<div class="login-submit btn-group">
 						<button type="button" class="btn btnSignIn" id="btnSignIn">登录</button>
 					</div>
 				</form>
+				
 			</div>
 		</div>
 	</div>
 	
+	<!--jq库-->
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<!--背景canvas图-->
 	<script color="97,197,255" opacity="0.8" zindex="1" count="100" src="js/canvas-nest.js"></script>
+	<!--表单验证js-->
+	<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+	<!--弹窗插件-->
+	<script src="js/jquery.notice.js" type="text/javascript" charset="utf-8"></script>
 	
+	<div class="jq-notice-container hidden">
+		<div class="jq-notice-content">
+			<header class="jq-notice-header"><img src="img/warning.png" alt="提示"><span></span><img src="img/close.png" alt="关闭" title="关闭" id="close"></header>
+			<section class="jq-notice-context"></section>
+		</div>
+	</div>
 </body>
 
 </html>
