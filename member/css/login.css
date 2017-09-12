@@ -1,0 +1,233 @@
+/*整体页面初始化*/
+
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	font-family: "微软雅黑";
+	font-size: 10px;
+	color: #303439;
+	overflow: hidden;
+}
+
+#wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 10%;
+	box-sizing: border-box;
+	font-size: 1.6rem;
+	/*background: url(bg.jpg) no-repeat;*/
+	background: #F3F3F3;
+	background-size: cover;
+}
+
+h1 {
+	color: #303439;
+	text-align: center;
+	font-size: 3.5rem;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+#wrapper .signIn,
+#wrapper .signOut {
+	position: absolute;
+	width: 80%;
+	height: 320px;
+	background: #fff;
+	border-radius: 10px;
+	padding: 5%;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+	box-sizing: border-box;
+	z-index: 99999;
+}
+
+#wrapper .signIn {
+	right: -90%;
+	height: 430px;
+}
+
+.container1 {
+	position: relative;
+}
+
+form {
+	margin: 0 auto;
+	width: 90%;
+}
+
+div.form-group:not(.formGroup),
+div.btn-group {
+	width: 100%;
+	height: 42px;
+	position: relative;
+	margin-top: 15px;
+}
+
+div.formGroup {
+	font-size: 1.4rem;
+	position: relative;
+}
+
+div.formGroup span {
+	display: inline-block;
+	height: 20px;
+}
+
+div.formGroup span:nth-child(1) input {
+	vertical-align: middle;
+	height: 14px;
+}
+
+div.formGroup span:nth-child(2) {
+	position: absolute;
+	right: 0px;
+}
+
+div.form-group>label,
+div.btn-group>label {
+	position: absolute;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	min-width: 40px;
+	margin-left: 6px;
+	text-align: right;
+	box-sizing: border-box;
+}
+
+div.form-group>input,
+div.btn-group>input:not([type='checkbox']) {
+	display: block;
+	width: 100%;
+	height: 40px;
+	border: 1px solid #bfbfbf;
+	border-radius: 5px;
+	padding-left: 50px;
+	box-sizing: border-box;
+}
+
+div.form-group:nth-child(4)>input {
+	padding-left: 62px !important;
+}
+
+input:focus,
+button:focus {
+	outline: none;
+}
+
+button.sendPhone {
+	position: absolute;
+	background: #303439;
+	top: 0px;
+	right: 0px;
+	width: 10rem;
+	height: 40px;
+	border: 1px solid #303439;
+	text-align: center !important;
+	padding: 0px !important;
+	border-radius: 0px !important;
+	color: #fff;
+}
+
+@media screen and (min-width:320px) and (max-width: 380px) {
+	button.sendPhone {
+		width: 7rem;
+	}
+	.btn {
+		width: 6.5rem !important;
+	}
+}
+
+.btn-group {
+	text-align: center;
+}
+
+.btn {
+	width: 8.3rem;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #303439;
+	border-radius: 8px;
+	text-align: center;
+}
+
+.btn:nth-child(2) {
+	margin-left: 10px;
+}
+
+.btnSignUp {
+	background: #fff;
+}
+
+.btnSignIn,
+.btnReset {
+	background: #303439;
+	color: #fff;
+}
+
+.bgImg {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	width: 100%;
+	height: 100%;
+	filter: url(blur.svg#blur);
+}
+
+.blur {
+	position: absolute;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	background: url(bg.jpg) no-repeat;
+	background-size: cover;
+	top: 0px;
+	left: 0px;
+	-webkit-filter: blur(20px);
+	/* Chrome, Opera */
+	-moz-filter: blur(20px);
+	-ms-filter: blur(20px);
+	filter: blur(20px);
+}
+
+
+/*动画效果*/
+
+.error {
+	animation: errAnimation 200ms;
+}
+
+@keyframes errAnimation {
+	0% {
+		transform: translateX(4px);
+	}
+	20% {
+		transform: translateX(0px);
+	}
+	40% {
+		transform: translateX(-4px);
+	}
+	60% {
+		transform: translateX(0px);
+	}
+	80% {
+		transform: translateX(4px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}
