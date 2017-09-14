@@ -133,10 +133,10 @@ $(document).ready(function () {
     $signUp1.on('click',function(){
     	$('.signOut').animate({
             left: "-85%"
-        },300);
+        },100);
         $('.signIn').animate({
             right: "10%"
-        },300);
+        },100);
     })
     
     $signRe.on('click',function(){
