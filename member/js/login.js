@@ -94,7 +94,7 @@ $(document).ready(function () {
         	$('input:eq(4)').addClass('error');
         	$.notice('登录提示：', '密码长度不能小于6位！', undefined, 200, 70);
         }
-        else if($passwd2_2.val().length != $passwd2_1.val().length){
+        else if($passwd2_2.val() != $passwd2_1.val()){
         	$('input:gt(2)').css('border','1px solid red');
         	$('input:gt(2)').addClass('error');
         	$.notice('登录提示：', '两次密码输入不一致', undefined, 200, 70);
