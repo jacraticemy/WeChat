@@ -133,19 +133,19 @@ $(document).ready(function () {
     $signUp1.on('click',function(){
     	$('.signOut').animate({
             left: "-85%"
-        },100);
+        },200);
         $('.signIn').animate({
             right: "10%"
-        },100);
+        },200);
     })
     
     $signRe.on('click',function(){
     	$('.signOut').animate({
             left: "10%"
-        },300);
+        },200);
         $('.signIn').animate({
             right: "-85%"
-        },300);
+        },200);
     })
     
     
