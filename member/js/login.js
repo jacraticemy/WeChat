@@ -16,17 +16,18 @@ $(document).ready(function () {
         if (!$user.val() || !$passwd.val()) {
         	$('input').css('border','1px solid red');
       		$('input').addClass('error');
-      		$.notice('登录提示：', '信息未填写完整！', undefined, 300, 150);
+      		$.notice('登录提示：', '信息未填写完整！', undefined, 200, 70);
       		return;	
         }
         else if(!regName.test($user.val())){
         	$('input:first').css('border','1px solid red');
-        	$.notice('登录提示：', '账号填写错误！', undefined, 300, 150);
+        	$('input:first').addClass('error');
+        	$.notice('登录提示：', '账号填写错误！', undefined, 200, 70);
         }
         else if($passwd.val().length < 6){
         	$('input:last').css('border','1px solid red');
         	$('input').addClass('error');
-        	$.notice('登录提示：', '密码长度不能小于6位！', undefined, 300, 150);
+        	$.notice('登录提示：', '密码长度不能小于6位！', undefined, 200, 70);
         }
 //      else{
 //      	
@@ -64,5 +65,6 @@ $(document).ready(function () {
     
      $('#close').on('click', function (event) {
     	$('input').css('border','1px solid #bfbfbf');
+    	$('input').removeClass('error');
     })
 });

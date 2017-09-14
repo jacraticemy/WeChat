@@ -52,7 +52,7 @@ $(document).ready(function () {
         if(typeof height === 'number') {
             $content.css({
                 'height': height + 'px',
-                'marginTop': - height / 2 + 'px'
+//              'marginTop': - height / 2 + 'px'
             });
             $context.css({
                 'height': height - 30 + 'px',
