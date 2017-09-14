@@ -213,6 +213,14 @@ button.sendPhone {
 	z-index: 1000;
 }
 
+.forgetPwd{
+	float: right;
+	color: gray;
+	font-size: 15px;
+}
+.forgetPwd:hover {
+	text-decoration: underline;
+}
 /*动画效果*/
 
 .error {

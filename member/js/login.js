@@ -4,6 +4,7 @@ $(document).ready(function () {
     var $passwd1 = $form1.find('.password');
     var $signIn1 = $form1.find('#btnSignIn');
     var $signUp1 = $form1.find('#btnSignUp');//第一个注册按钮
+  //  var $forgetPwd = $form1.find('.forgetPwd');
     
     var $form2 = $('form:last');
     var $user2 = $form2.find('.inUserName');
@@ -152,5 +153,6 @@ $(document).ready(function () {
     $('#close').on('click', function (event) {
     	$('input').css('border','1px solid #bfbfbf');
     	$('input').removeClass('error');
-    })
-});
+    });
+    
+})
