@@ -10,6 +10,7 @@ body {
 /*顶栏*/
 #header {
 	position: fixed;
+	z-index: 300;
 	top: 0;
 	width: 100%;
 	height: 55px;
