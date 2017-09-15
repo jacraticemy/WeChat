@@ -1,0 +1,53 @@
+*{
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+body {
+	background: rgb(248, 248, 248);
+}
+/*顶栏*/
+#header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 55px;
+	background: #FFFFFF;
+}
+
+.header-logo {
+	width: 370px;
+	height: 55px;
+	margin: 0 auto;	
+}
+
+#header img {
+	margin-top: 2px;
+	margin-left: 10px;
+	float: left;
+	
+}
+/**/
+/*底栏*/
+#footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	background: #FFFFFF;
+	border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+#footer .Sign , #footer .Meeting , #footer .yourSelf {
+	width: 33%;
+	text-align: center;
+	margin-top: 5px;
+	float: left;
+}
+
+#footer .img-text {
+	font-size: 12px;
+	font-family: "微软雅黑";
+	color: rgba(0,0,0,.4);
+}
