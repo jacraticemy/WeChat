@@ -59,8 +59,7 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: URLHead + "api/member/login",
-            beforeSend: $.notice('提示！', '正在登录...', function () {
-            }),
+            beforeSend: $.notice('提示！', '正在登录...', undefined, 200, 70),
             
             data: ajaxArgs,
             success: function(data){

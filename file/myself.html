@@ -4,11 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-	<title>签到</title>
+	<title>我的</title>
 	<!--公共页面样式-->
 	<link rel="stylesheet" type="text/css" href="css/public.css"/>
-	<!--功能页面样式-->
-	
+	<!--本页页面样式-->
+	<link rel="stylesheet" type="text/css" href="css/myself.css"/>
+	<!-- 弹窗插件样式 -->
+	<link rel="stylesheet" href="css/jquery.notice.css">
 	
 </head>
 
@@ -22,7 +24,54 @@
 			
 		</div>
 		<div id="mainbody" class="mainbody">
-			
+			<h6>个人信息</h6>
+			<div class="self-intro box-a">
+				<div class="box-b">
+					<div class="intro-title intro-head-title">头像</div>
+					<div class="intro-content intro-head"></div>
+				</div>
+				<div class="box-b">
+					<div class="intro-title">昵称</div>
+					<div class="intro-content">伯牙期雨 ></div>
+				</div>
+				<div class="box-b">
+					<div class="intro-title">姓名</div>
+					<div class="intro-content">朱凯军 ></div>
+				</div>
+				<div class="box-b">
+					<div class="intro-title">平台</div>
+					<div class="intro-content">服务器平台 ></div>
+				</div>
+				<div class="box-b">
+					<div class="intro-title">邮箱</div>
+					<div class="intro-content">630957647@qq.com ></div>
+				</div>
+				<div class="box-b">
+					<div class="intro-title">学校</div>
+					<div class="intro-content">重庆邮电大学 ></div>
+				</div>
+				<div class="box-b" style="border: none;">
+					<div class="intro-title">简介</div>
+					<div class="intro-content">服务器平台第六届成员 ></div>
+				</div>
+			</div>
+			<h6>密码修改</h6>
+			<div class="self-intro box-a">
+				<div class="box-b">
+					<div class="intro-title">账号</div>
+					<div class="intro-content">朱凯军 ></div>
+				</div>
+				<div class="box-b" style="border: none;">
+					<div class="intro-title">密码</div>
+					<div class="intro-content">********* ></div>
+				</div>
+			</div>
+			<h6>登出</h6>
+			<div class="self-intro box-a" style="border-bottom: none;">
+				<button class="self-signOut" type="button" id="self-logoff">
+					注销
+				</button>
+			</div>
 		</div>
 		<div id="footer" class="footer">
 			<a href="Sign.html">
@@ -50,6 +99,26 @@
 	<script src="js/jquery.min.js"></script>
 	<!--公共js-->
 	<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+	<!--本页js-->
+	<script src="js/myself.js" type="text/javascript" charset="utf-8"></script>
+	<!--弹窗插件-->
+	<script src="js/jquery.notice.js" type="text/javascript" charset="utf-8"></script>
+	
+	<div class="jq-notice-container hidden">
+		<div class="jq-notice-content" style="margin-top: 80px">
+			<header class="jq-notice-header">
+				<img src="img/warning.png" alt="提示">
+				<span></span>
+				<img src="img/close.png" alt="关闭" title="关闭" id="close">
+			</header>
+			<section class="jq-notice-context"></section>
+			<div class="jq-notice-foot">
+				<button type="button" id="logoff-sure" class="btn">确定</button>
+				<button type="button" class="btn" id="logoff-close">取消</button>
+			</div>
+			
+		</div>
+	</div>
 </body>
 
 </html>

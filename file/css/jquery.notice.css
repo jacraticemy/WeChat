@@ -1,0 +1,116 @@
+/*弹出框的全屏背景*/
+.jq-notice-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(99, 99, 99, 0.1);
+    z-index: 999;
+}
+/*隐藏弹出框背景*/
+.jq-notice-container.hidden {
+    width: 0;
+    height: 0;
+}
+
+/*弹出框内容*/
+.jq-notice-content {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    margin: 0 0 0 -150px;
+    width: 300px;
+    transition: transform 300ms ease-in-out;
+    background: transparent;
+    box-shadow: 3px 5px 5px -3px #ddd;
+    transform-origin:80% 20%;
+}
+/*隐藏弹出框内容*/
+.jq-notice-container.hidden .jq-notice-content {
+    transform:scale(0);
+    transition: transform 300ms ease-in-out;
+}
+
+/*弹出框header样式*/
+.jq-notice-content header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #408ac9;
+    height: 30px;
+}
+.jq-notice-content header:hover {
+    cursor: move;
+}
+
+/*弹出框提示图片*/
+.jq-notice-container img {
+    width: 22px;
+    height: 22px;
+}
+.jq-notice-content header img:nth-of-type(1) {
+    position: absolute;
+    top: 3px;
+    left: 5px;
+}
+
+.jq-notice-content header span {
+    display: block;
+    line-height: 30px;
+    color: #fff;
+    font-size: 18px;
+    margin-left: 50px;
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/*弹出框关闭按钮*/
+.jq-notice-content header img:nth-of-type(2) {
+    position: absolute;
+    right: 5px;
+    top: 3px;
+}
+.jq-notice-content header img:nth-of-type(2):hover {
+    cursor: pointer;
+}
+
+/*弹出框内容主体*/
+.jq-notice-context {
+    background-color: white;
+    padding: 10px 20px;
+    /*min-height: 150px;*/
+    max-height: 400px;
+    color: black;
+    overflow: auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+@media all and (max-width: 500px) {
+    .jq-notice-content {
+        width: 300px;
+        margin: -200px 0 0 -150px;
+    }
+}
+
+.jq-notice-context .input-group {
+    margin: 10px auto;
+    vertical-align: top;
+}
+.jq-notice-context .btn {
+    width: 55px;
+    height: 25px;
+    padding: 5px 20px;
+    background: #408ac9;
+    color: #fff;
+    border: 1px solid #408ac9;
+    border-radius: 3px;
+    margin: 0 10px;
+    outline: none;
+    cursor: pointer;
+}
+.divOperation {
+    margin-top: 50px;
+    text-align: center;
+}
