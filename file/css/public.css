@@ -2,11 +2,11 @@
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
-	overflow-x: hidden;
 }
 
 body {
 	background: rgb(248, 248, 248);
+	overflow-x: hidden;
 }
 /*顶栏*/
 #header {
