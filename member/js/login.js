@@ -47,6 +47,10 @@ $(document).ready(function () {
         	$.notice('登录提示：', '密码长度不能小于6位！', undefined, 200, 70);
         }
         
+        setTimeout(function () {
+			window.location.href = '../file/Sign.html';
+		}, 1000)
+        
         var ajaxArgs = {
         	realname : $user1.val(),
         	password : $passwd1.val()
