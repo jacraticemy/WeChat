@@ -164,8 +164,7 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: URLHead + "/api/member/findPassword",
-            beforeSend: $.notice('提示！', '请稍等......', function () {
-            }),
+            beforeSend: $.notice('提示！', '请稍等......', undefined, 200, 70),
             data: ajaxArgs,
             success: function(data){
                 if(typeof data === 'string') {

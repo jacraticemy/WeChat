@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>签到</title>
+	<!--公共页面样式-->
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<!--本页页面样式-->
+	<link rel="stylesheet" type="text/css" href="css/meeting.css"/>
+	
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="header" class="header">
+			<div class="header-logo">
+				<img src="img/nmid_logo.png"/>
+				<img src="img/logo-text.png"/>
+			</div>
+			
+		</div>
+		<div id="mainbody" class="mainbody">
+			<ul class="meeting-nav">
+				<li><a href="meeting-list.html">会议列表</a></li>
+				<li class="nav-active"><a href="###">会议上传</a></li>
+			</ul>
+			 <div class="main">
+                    <!-- 修改个人资料 -->
+                    <div class="information-setting">
+                        <p>修改个人资料</p>
+                        <img alt="图片加载中..." class="head-view" />
+                        <form id="upload-form" enctype="multipart/form-data" method="post">
+                            <div class="input-box">
+                                <input type="file" id="upload-pic" name="headImg">
+                                <input type="hidden" id="upload-uid" name='uid'>
+                            </div>
+                        </form>
+                        <!-- 基本信息设置 -->
+                        <div class="input-box infor-setting">
+                            <input type="text" placeholder="姓名" id="user-name"/>
+                            <input type="text" placeholder="电话" id="user-telephone"/>
+                            <input type="text" placeholder="邮箱" id="user-email"/>
+                            <input type="text" placeholder="微博" id="user-weibo"/>
+                        </div>
+                        <div class="input-box">
+                            <textarea id="introduction" cols="30" rows="10" placeholder="个人简介"></textarea>
+                        </div>
+                        <div class="btn-submit" >
+                            <a href="#" >发布</a>
+                        </div>
+                    </div>
+                </div>
+                
+		</div>
+		<div id="footer" class="footer">
+			<a href="Sign.html">
+				<div class="Sign">
+					<img src="img/Sign.png" width="30px" height="30px" id="footer-sign"/>
+					<p class="img-text">签到</p>
+				</div>
+			</a>
+			<a href="#">
+				<div class="Meeting">
+					<img src="img/meeting1.png" width="30px" height="30px" id="footer-meeting"/>
+					<p class="img-text"  style="color: #1296db;">会议</p>
+				</div>
+			</a>
+			<a href="myself.html">
+				<div class="yourSelf">
+					<img src="img/me.png" width="30px" height="30px" id="footer-youself"/>
+					<p class="img-text">我的</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	
+	<!--jq库-->
+	<script src="js/jquery.min.js"></script>
+	<!--公共js-->
+	<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+	<!--本页面js-->
+	<script src="js/meeting.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

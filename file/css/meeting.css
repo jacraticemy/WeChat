@@ -1,0 +1,24 @@
+.mainbody .meeting-nav {
+	background: url(../img/bg.png) 0 0 repeat-x;
+	height: 46px;
+	line-height: 46px;
+	border-top: 1px solid #E4E4E4;
+}
+
+.mainbody .meeting-nav li {
+	float: left;
+    list-style: none;
+}
+
+.meeting-nav li a {
+	display: block;
+    width: 100px;
+    height: 46px;
+    text-align: center;
+    font-size: 18px;
+    color: #000000;
+}
+
+.nav-active {
+	background: url(../img/bg-active.png) 0 0 repeat-x;
+}

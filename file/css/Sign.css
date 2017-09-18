@@ -1,0 +1,16 @@
+h1 {
+	text-align: center;
+	font-family: "微软雅黑";
+	padding: 10px 0;
+	display: inline-block;
+}
+
+.Sign-title {
+	width: 175px;
+	margin: 0 auto;
+}
+
+#content img {
+	position: relative;
+	top: 2px;
+}
