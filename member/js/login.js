@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	var URLHead = '';
+	var URLHead = 'http://123.207.169.62:8080';
 
     var $form1 = $('form:first');
     var $user1 = $form1.find('.username');
@@ -10,6 +10,7 @@ $(document).ready(function () {
     
     var $form2 = $('form:last');
     var $user2 = $form2.find('.inUserName');
+    var $platform = $form2.find('.platform');
     var $passwd2_1 = $form2.find('.inPwd1');
     var $passwd2_2 = $form2.find('.inPwd2');
     var $signUp2 = $form2.find('#btnSignUp2');//第二个注册按钮
@@ -28,6 +29,8 @@ $(document).ready(function () {
     
     /*登录事件*/
     $signIn1.on('click', function (event) {
+    	alert('123')
+    	event.preventDefault();
     	regName = /^[\u4e00-\u9fa5]{2,4}$/;//姓名
         event.preventDefault();
         if (!$user1.val() || !$passwd1.val()) {
@@ -47,18 +50,31 @@ $(document).ready(function () {
         	$.notice('登录提示：', '密码长度不能小于6位！', undefined, 200, 70);
         }
         
-        setTimeout(function () {
-			window.location.href = '../file/Sign.html';
-		}, 1000)
+//      setTimeout(function () {
+//			window.location.href = '../file/Sign.html';
+//		}, 1000)
         
-        var ajaxArgs = {
+     
+        //测试网址连通性
+//      $.ajax({
+//	       	url: URLHead + "Wechat/api/member/login",
+//	       	timeout: 5000
+//    	 }).done(function(data) {
+//     	// 请求成功
+//    	 }).fail(function(jqXHR, textStatus, errorThrown) {
+//    	 	// net::ERR_CONNECTION_REFUSED 发生时，也能进入
+//     		console.info("网络出错");
+//     	 });
+
+		var ajaxArgs = {
         	realname : $user1.val(),
         	password : $passwd1.val()
         }
+   
         //接口对接
         $.ajax({
             type: "POST",
-            url: URLHead + "api/member/login",
+            url: URLHead + "/Wechat/api/member/login",
             beforeSend: $.notice('提示！', '正在登录...', undefined, 200, 70),
             
             data: ajaxArgs,
@@ -68,23 +84,26 @@ $(document).ready(function () {
                 }
                 if(data.code == 200) {
                     
-                    $.notice("提示！", "登录成功，正在跳转...");
+                    $.notice("提示！", "登录成功，正在跳转...", undefined, 200, 70);
                     setTimeout(function () {
 			            window.location.href = '../file/Sign.html';
 			        }, 1000)
         
                 } else {
-                    $.notice("提示！", "登录失败，用户或密码错误，请重新登录...");
+                    $.notice("提示！", "登录失败，用户或密码错误，请重新登录...", undefined, 200, 70);
                 }
             }
+//          error: function(XMLHttpRequest){
+//          	$.notice("服务器错误",undefined,200,70);
+//          }
         })
     });
     
     /*注册事件*/
     $signUp2.on('click', function (event) {
-    	regName = /^[\u4e00-\u9fa5]{2,4}$/;//姓名
+    	regName = /^[\u4e00-\u9fa5]{2,8}$/;//姓名
         event.preventDefault();
-        if (!$passwd2_1.val() || !$passwd2_1.val() || !$user2.val()) {
+        if (!$passwd2_1.val() || !$passwd2_1.val() || !$user2.val() || !$platform.val()) {
         	$('input').css('border','1px solid red');
       		$('input').addClass('error');
       		$.notice('登录提示：', '信息未填写完整！', undefined, 200, 70);
@@ -95,50 +114,51 @@ $(document).ready(function () {
         	$('input:eq(2)').addClass('error');
         	$.notice('登录提示：', '账号格式错误，请输入中文名！', undefined, 200, 70);
         }
-        else if($passwd2_1.val().length < 6){
+        else if(!regName.test($platform.val())){
         	$('input:eq(3)').css('border','1px solid red');
         	$('input:eq(3)').addClass('error');
-        	$.notice('登录提示：', '密码长度不能小于6位！', undefined, 200, 70);
+        	$.notice('登录提示：', '格式错误，请重新输入！', undefined, 200, 70);
         }
-        else if($passwd2_2.val().length < 6){
+        else if($passwd2_1.val().length < 6){
         	$('input:eq(4)').css('border','1px solid red');
         	$('input:eq(4)').addClass('error');
         	$.notice('登录提示：', '密码长度不能小于6位！', undefined, 200, 70);
         }
+        else if($passwd2_2.val().length < 6){
+        	$('input:eq(5)').css('border','1px solid red');
+        	$('input:eq(5)').addClass('error');
+        	$.notice('登录提示：', '密码长度不能小于6位！', undefined, 200, 70);
+        }
         else if($passwd2_2.val() != $passwd2_1.val()){
-        	$('input:gt(2)').css('border','1px solid red');
-        	$('input:gt(2)').addClass('error');
+        	$('input:gt(3)').css('border','1px solid red');
+        	$('input:gt(3)').addClass('error');
         	$.notice('登录提示：', '两次密码输入不一致', undefined, 200, 70);
         }
-//      else{
-//      	
-//      }
+        
+        var ajaxArgs = {
+        	realname : $user2.val(),
+        	password : $passwd2_1.val(),
+        	resetPassword : $passwd2_2.val(),
+        	department : $platform.val()
+        }
+
         //接口对接
-//      $.ajax({
-//          type: "POST",
-//          url: utils.URLHead + "/users/login",
-//          beforeSend: $.notice('提示！', '正在登录...', function () {
-//              utils.loading($('.jq-notice-context'));
-//          }),
-//          data: ajaxArgs,
-//          success: function(data){
-//              if(typeof data === 'string') {
-//                  data = JSON.parse(data);
-//              }
-//              if(data.code == 200) {
-//                  var admin = data.body;
-//                  // 设置登录状态
-//                  utils.setLoginState(admin);
-//                  // 登录用户信息保存到cookie中
-//                  
-//                  $.notice("提示！", "登录成功，正在跳转...");
-//                  utils.jumpUrl('../../user/setting/page.html', 2000);
-//      
-//              } else {
-//                  $.notice("提示！", "登录失败，用户或密码错误，请重新登录...");
-//              }
-//          }
-//      })
+        $.ajax({
+            type: "POST",
+            url: URLHead + "/Wechat/api/member/register",
+            //beforeSend: $.notice('提示！', '正在登录...'),
+            data: ajaxArgs,
+            success: function(data){
+                if(typeof data === 'string') {
+                    data = JSON.parse(data);
+                }
+                if(data.code == 200) {
+                    $.notice("提示！", "注册成功,请返回登录！" , undefined, 200, 70);
+                } else {
+                    $.notice("提示！", "注册出了点问题，请重新注册...", undefined, 200, 70);
+                }
+            }
+        })
     });
     
     /*找回密码事件*/

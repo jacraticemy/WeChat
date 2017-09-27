@@ -144,9 +144,9 @@ div.btn-group>input:not([type='checkbox']) {
 	box-sizing: border-box;
 }
 
-div.form-group:nth-child(4)>input {
+/*div.form-group:nth-child(4)>input {
 	padding-left: 62px !important;
-}
+}*/
 
 input:focus,
 button:focus {
