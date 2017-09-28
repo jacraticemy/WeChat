@@ -19,6 +19,7 @@ $(document).ready(function () {
     
     var $pwdFind = $('#btnFind');
     var $pwdUser = $('#pwdUser');
+    var $Vcode = $('#viewCode');
     
     // enter键登录   
     $(document).keyup(function(event){ 
@@ -131,13 +132,13 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: URLHead + "/Wechat/api/member/register",
-            //beforeSend: $.notice('提示！', '正在登录...'),
+            beforeSend: $.notice('提示！', '请稍等...'),
             data: ajaxArgs,
             success: function(data){
                 if(typeof data === 'string') {
                     data = JSON.parse(data);
                 }
-                if(data.code == 200) {
+                if(data.code == 201) {
                     $.notice("提示！", "注册成功,请返回登录！" , undefined, 200, 70);
                 } else {
                     $.notice("提示！", "注册出了点问题，请重新注册...", undefined, 200, 70);
@@ -164,6 +165,7 @@ $(document).ready(function () {
         
         var ajaxArgs = {
             realname: $pwdUser.val(),
+            Vcode: $Vcode.val()
         };
         //  接口对接
         $.ajax({
@@ -176,10 +178,11 @@ $(document).ready(function () {
                     data = JSON.parse(data);
                 }
                 if(code == 200) {      
-                    $.notice("提示！", "找回密码的邮件已发送，请进入邮件修改密码...");
-        
+                    $.notice("提示！", "找回密码的邮件已发送，请进入邮件修改密码...", undefined, 200, 70);
+                }else if(code == 400){
+                	$.notice("提示！", "验证码错误，请刷新后重试...", undefined, 200, 70);
                 } else {
-                    $.notice("警告！", "出现错误，请重试...");
+                    $.notice("警告！", "出现错误，请重试...", undefined, 200, 70);
                 }
             }
         })
