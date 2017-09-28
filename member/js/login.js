@@ -29,7 +29,6 @@ $(document).ready(function () {
     
     /*登录事件*/
     $signIn1.on('click', function (event) {
-    	alert('123')
     	event.preventDefault();
     	regName = /^[\u4e00-\u9fa5]{2,4}$/;//姓名
         event.preventDefault();
@@ -49,22 +48,6 @@ $(document).ready(function () {
         	$('input:last').addClass('error');
         	$.notice('登录提示：', '密码长度不能小于6位！', undefined, 200, 70);
         }
-        
-//      setTimeout(function () {
-//			window.location.href = '../file/Sign.html';
-//		}, 1000)
-        
-     
-        //测试网址连通性
-//      $.ajax({
-//	       	url: URLHead + "Wechat/api/member/login",
-//	       	timeout: 5000
-//    	 }).done(function(data) {
-//     	// 请求成功
-//    	 }).fail(function(jqXHR, textStatus, errorThrown) {
-//    	 	// net::ERR_CONNECTION_REFUSED 发生时，也能进入
-//     		console.info("网络出错");
-//     	 });
 
 		var ajaxArgs = {
         	realname : $user1.val(),
@@ -98,6 +81,8 @@ $(document).ready(function () {
 //          }
         })
     });
+    
+    
     
     /*注册事件*/
     $signUp2.on('click', function (event) {
@@ -183,8 +168,8 @@ $(document).ready(function () {
         //  接口对接
         $.ajax({
             type: "POST",
-            url: URLHead + "/api/member/findPassword",
-            beforeSend: $.notice('提示！', '请稍等......', undefined, 200, 70),
+            url: URLHead + "/Wechat/api/member/findPassword",
+            //beforeSend: $.notice('提示！', '请稍等......', undefined, 200, 70),
             data: ajaxArgs,
             success: function(data){
                 if(typeof data === 'string') {
