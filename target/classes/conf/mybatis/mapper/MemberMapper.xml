@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.nexuslink.dao.impl.mybatis.MemberMapper">
+
+    <insert id="addMember" parameterType="Member">
+        INSERT INTO member(uuid,realname,loginname,password,department,signature,email)
+        VALUES (#{uuid},#{realname},#{loginname},#{password},#{department},#{signature},#{email})
+    </insert>
+
+    <update id="updateMember" parameterType="Member">
+        UPDATE member
+        <set>
+            <if test="realname!=null">realname=#{realname},</if>
+            <if test="loginname!=null">loginname=#{loginname},</if>
+            <if test="department!=null">department=#{department},</if>
+            <if test="signature!=null">signature=#{signature},</if>
+            <if test="email!=null">email=#{email}</if>
+        </set>
+         WHERE uuid=#{uuid}
+    </update>
+
+    <select id="getMembers" parameterType="int" resultType="Member">
+        select id,realname,department,isnow FROM member WHERE isnow=#{isnow} ORDER BY id;
+    </select>
+
+    <select id="getMemberByUUid" parameterType="String" resultType="Member">
+        SELECT * FROM member WHERE uuid=#{uuid}
+    </select>
+
+    <select id="getMemberByName" parameterType="String" resultType="Member">
+        SELECT * FROM member WHERE realname=#{name}
+    </select>
+
+    <select id="getMemberById" parameterType="int" resultType="Member">
+        SELECT * FROM member WHERE id=#{id}
+    </select>
+
+    <select id="getEmailByRealname" parameterType="String" resultType="String">
+        SELECT email FROM member WHERE realname = #{realname}
+    </select>
+
+</mapper>

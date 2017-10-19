@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:conf/mybatis/mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:conf/mybatis/mapper/*.xml"/>
+        <property name="typeAliasesPackage" value="cn.nexuslink.pojo"/>
+    </bean>
+
+    <!--注册映射器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.nexuslink.dao.impl.mybatis"/>
+    </bean>
+</beans>

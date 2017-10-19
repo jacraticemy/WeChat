@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.nexuslink.dao.impl.mybatis.SignmentMapper">
+
+    <select id="getSignments" resultType="Signment">
+        SELECT memberId,totaltime,frequency FROM signment WHERE memberId
+        IN (SELECT id FROM member WHERE isnow=1) ORDER BY memberId;
+    </select>
+
+    <select id="getSignInfoByName" resultType="Signment">
+        SELECT *FROM  signment WHERE memberId =
+        (SELECT id FROM member WHERE realname=#{realname})
+    </select>
+
+
+</mapper>

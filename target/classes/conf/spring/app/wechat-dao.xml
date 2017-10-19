@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="cn.nexuslink.dao.*"/>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://123.207.169.62:3306/wechat?useUnicode=true&amp;characterEncoding=utf-8" />
+        <property name="username" value="root" />
+        <property name="password" value="luo140610" />
+        <property name="maxActive" value="20" />
+        <property name="minIdle" value="5" />
+        <property name="maxIdle" value="20" />
+        <property name="initialSize" value="5" />
+        <property name="maxWait" value="1000" />
+        <property name="timeBetweenEvictionRunsMillis" value="10000" />
+        <property name="numTestsPerEvictionRun" value="10" />
+        <property name="minEvictableIdleTimeMillis" value="10000" />
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+</beans>

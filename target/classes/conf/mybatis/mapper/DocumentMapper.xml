@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.nexuslink.dao.impl.mybatis.DocumentMapper">
+
+    <select id="getDocById" parameterType="int" resultType="Document">
+        SELECT * FROM document WHERE id=#{id}
+    </select>
+
+    <insert id="publishDoc" parameterType="Document" >
+        INSERT INTO
+        document (title,authorId,url,description)
+        VALUES (#{title},#{authorId},#{url},#{description})
+    </insert>
+
+    <select id="getDocList" resultType="Document">
+        SELECT * FROM document
+        <if test="sort_by!=null and order!=null">ORDER BY ${sort_by} ${order}</if>
+        LIMIT #{index},#{size}
+    </select>
+
+    <update id="addDownloadCount" parameterType="int">
+        UPDATE document SET download_count = download_count + 1 WHERE id=#{id}
+    </update>
+
+    <update id="addLookCount" parameterType="int">
+        UPDATE document SET look_count = look_count + 1 WHERE id=#{id}
+    </update>
+
+    <select id="getDocNum" resultType="int">
+        SELECT count(id) FROM document
+    </select>
+
+</mapper>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         id="WebApp_ID" version="3.1">
+
+  <welcome-file-list>
+    <welcome-file>/index.jsp</welcome-file>
+  </welcome-file-list>
+
+
+  <!--字符编码控制-->
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>CrosFilter</filter-name>
+    <filter-class>cn.nexuslink.interceptor.CorsFileter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CrosFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!--配置springmvc-->
+  <servlet>
+    <servlet-name>Wechat</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:conf/spring/web/*.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Wechat</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <!--应用上下文配置-->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+      classpath:conf/spring/app/*.xml
+    </param-value>
+  </context-param>
+
+  <!--spring监听器-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>wechat.root</param-value>
+  </context-param>
+
+  <!-- 上传文件的windows绝对地址  -->
+  <context-param>
+    <param-name>fileWindowsLocation</param-name>
+    <param-value>E:\后台软件\apache-tomcat-9.0.0.M9\webapps\Wechat\upload\</param-value>
+  </context-param>
+
+  <!--上传文件的Lunix绝对地址-->
+  <context-param>
+    <param-name>fileLunixLocation</param-name>
+    <param-value>/usr/local/apache-tomcat-9.0.0.M9/webapps/Wechat/WEB-INF/upload</param-value>
+    <param-value></param-value>
+  </context-param>
+  <context-param>
+    <!--log4j配置地址 -->
+    <param-name>log4jConfigLocation</param-name>
+    <!-- <param-value>/WEB-INF/classes/log4j.properties</param-value> -->
+    <param-value>classpath:log4j.properties</param-value>
+  </context-param>
+
+  <context-param>
+    <!-- log4j 配置扫描刷新间隔 可以不用 -->
+    <param-name>log4jRefreshInterval</param-name>
+    <param-value>10000</param-value>
+  </context-param>
+  <!-- spring里的log4j配置监听器 -->
+  <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+
+
+
+</web-app>

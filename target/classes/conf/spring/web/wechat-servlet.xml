@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--这测注解驱动特性-->
+    <mvc:annotation-driven/>
+    <mvc:annotation-driven validator="validator"/>
+
+    <context:annotation-config/>
+    <!--扫描注解-->
+    <context:component-scan base-package="cn.nexuslink"/>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!--配置校验器-->
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+    </bean>
+
+    <!--文件上传-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="1048576"/>
+    </bean>
+
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--需要进行拦截的地址-->
+            <mvc:mapping path="/api/member/*"/>
+            <mvc:mapping path="/api/file/upload"/>
+            <!--不需要进行拦截的地址-->
+            <mvc:exclude-mapping path="/api/member/login"/>
+            <mvc:exclude-mapping path="/api/member/findPassword"/>
+            <mvc:exclude-mapping path="/api/member/register"/>
+            <mvc:exclude-mapping path="/api/Vcode/VcodeImage"/>
+            <bean class="cn.nexuslink.interceptor.UserLoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>
